@@ -92,6 +92,28 @@ function ArticleContent({ article }: { article: Article }) {
         </div>
       </div>
 
+      {article.violations && article.violations.length > 0 && (
+        <CollapsibleBlock title="📋 Нарушения ПДД (описание)" id="violations">
+          <ol className="ml-5 mt-2 space-y-1.5">
+            {article.violations.map((v, i) => (
+              <li key={i}>
+                {i + 1}. {v}
+              </li>
+            ))}
+          </ol>
+        </CollapsibleBlock>
+      )}
+
+      {article.caseMaterials && article.caseMaterials.length > 0 && (
+        <CollapsibleBlock title="📂 Материалы дела" id="caseMaterials">
+          <ul className="ml-5 mt-2 space-y-1.5">
+            {article.caseMaterials.map((m, i) => (
+              <li key={i}>🔸 {m}</li>
+            ))}
+          </ul>
+        </CollapsibleBlock>
+      )}
+
       <CollapsibleBlock title="❓ Вопросы клиенту" id="questions">
         <ol className="ml-5 mt-2 space-y-1.5">
           {article.questions.map((q, i) => (
