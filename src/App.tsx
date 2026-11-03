@@ -92,6 +92,13 @@ function ArticleContent({ article }: { article: Article }) {
         </div>
       </div>
 
+      {article.info.note && (
+        <div className="bg-[#fff8e1] border-l-4 border-[#f9a825] rounded-md p-3 mb-4 text-sm text-[#5d4037]">
+          <span className="font-semibold">📌 Примечание: </span>
+          {article.info.note}
+        </div>
+      )}
+
       {article.violations && article.violations.length > 0 && (
         <CollapsibleBlock title="📋 Нарушения ПДД (описание)" id="violations">
           <ol className="ml-5 mt-2 space-y-1.5">
@@ -189,7 +196,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#f4f6f9] text-[#2c3e50] leading-relaxed font-sans">
-      <div className="max-w-[1100px] mx-auto px-5 py-5">
+      <div className="max-w-[1200px] mx-auto px-5 py-5">
         {/* Header */}
         <header className="bg-gradient-to-br from-[#1e3c72] to-[#2a5298] text-white p-6 rounded-xl mb-5 shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
           <h1 className="text-2xl md:text-[24px] font-bold mb-1">
@@ -197,6 +204,9 @@ export default function App() {
           </h1>
           <p className="opacity-90 text-sm">
             Выберите статью КоАП для просмотра скрипта работы с клиентом
+          </p>
+          <p className="opacity-70 text-xs mt-1">
+            Всего статей: {articles.length}
           </p>
         </header>
 
